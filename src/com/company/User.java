@@ -1,17 +1,19 @@
 package com.company;
 
-public class User{
+public class User {
     private String login;
     private String password;
     private String name;
     private Positions positions = Positions.ANONYMOUS;
 
-    public User(String login, String password, String name, Positions ANONYMOUS) {
+
+    public User(String login, String password, String name, Positions positions) {
         this.login = login;
         this.password = password;
         this.name = name;
-        positions = ANONYMOUS;
+        this.positions = positions;
     }
+
 
     public String getLogin() {
         return login;

@@ -5,6 +5,7 @@ public class Store {
     private String url;
     private User[] users;
     private User authorizedUser;
+    private Positions storesUser;
 
     public Store(String name, String url, User[] users) {
         this.name = name;
@@ -45,7 +46,7 @@ public class Store {
         this.authorizedUser = authorizedUser;
     }
 
-    public boolean isLogin(String login, String password) {
+    public boolean login(String login, String password) {
         if (login == null || password == null) {
             return false;
         }
@@ -63,4 +64,26 @@ public class Store {
         }
         return false;
     }
+
+
+    public void getCurrentUserRights() {
+        switch (storesUser) {
+            case DIRECTOR -> System.out.println("Директор магазина, может управлять кадрами, и ценами");
+            case ADMINISTRATOR -> System.out.println("Администратор магазина, может добавлять товары и редактировать их описание");
+            case MANAGER -> System.out.println("Менеджер магазина, может общаться с клиентами");
+            case CLIENT -> System.out.println("Клиент магазина, может покупать товары и пользоваться дисконтом");
+            case ANONYMOUS -> System.out.println("Анонимный пользователь, может покупать товары и или авторизоваться");
+        }
+
+    }
+
+    public void logOut() {
+        if (authorizedUser != null) {
+            authorizedUser = null;
+            System.out.println("Пользователь вышел из системы");
+        }
+
+    }
+
+
 }
